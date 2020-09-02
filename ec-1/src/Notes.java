@@ -3,7 +3,9 @@ import java.util.*;
 public class Notes {
     public static void main(String[] args) {
         // TODO: raw use of parameterized class "Dictionary" or "Hashtable"?
-        Dictionary geek = new Hashtable();
+        Dictionary notes = new Hashtable();
+        String prompt = "Type in a key-note pair such as seperated by space to store; type in key to retrieve note; " +
+                "type quit to exit";
 
         System.out.println("Welcome to the String Test Program!");
         System.out.println("This demonstrates how to input strings from the console.");

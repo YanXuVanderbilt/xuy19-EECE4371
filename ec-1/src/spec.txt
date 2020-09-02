@@ -1,0 +1,5 @@
+- CLI
+- store, retrieve
+- * prompted for action they want to perform
+- error msg "Note not found"
+- javac Notes.java; java Notes
