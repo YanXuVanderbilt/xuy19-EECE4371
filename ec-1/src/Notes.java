@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Main {
+public class Notes {
     public static void main(String[] args) {
         // TODO: raw use of parameterized class "Dictionary" or "Hashtable"?
         Dictionary geek = new Hashtable();
