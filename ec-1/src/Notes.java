@@ -4,17 +4,18 @@ public class Notes {
     public static void main(String[] args) {
         // TODO: raw use of parameterized class "Dictionary" or "Hashtable"?
         Dictionary notes = new Hashtable();
-        String prompt = "Type in a key-note pair such as seperated by space to store; type in key to retrieve note; " +
-                "type quit to exit";
+        String prompt = "Type in a key-note pair such as seperated by space to store\nType in key to retrieve note\n" +
+                "Type quit to exit:";
 
-        System.out.println("Welcome to the String Test Program!");
-        System.out.println("This demonstrates how to input strings from the console.");
+        System.out.println("Welcome to the Notes program!");
+        System.out.println("This is a command-line program that helps you store and retrieve your notes.");
 
         // Define a scanner for user input
 
         Scanner userInput = new Scanner(System.in);
 
-        System.out.println("Type in a line of text (a String) or \"quit\" to end:");
+        //System.out.println("Type in a line of text (a String) or \"quit\" to end:");
+        System.out.println(prompt);
 
         while (userInput.hasNextLine()) {
             String line = userInput.nextLine();
