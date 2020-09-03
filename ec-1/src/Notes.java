@@ -2,7 +2,6 @@ import java.util.*;
 
 public class Notes {
     public static void main(String[] args) {
-        // TODO: raw use of parameterized class "Dictionary" or "Hashtable"?
         Map<String, String> notes = new Hashtable<String, String>();
         String prompt = "There are three operations available";
         String options = "(1) Type in a key-note pair with \"@\" as separator: e.g. reminder1 @ Put eggs in fridge\n" +
@@ -51,41 +50,6 @@ public class Notes {
 
         System.out.println("bye!");
         userInput.close();
-
-        // put() method
-        //geek.put("123", "Code");
-        //geek.put("456", "Program");
-
-        // elements() method :
-        //for (Enumeration i = geek.elements(); i.hasMoreElements();)
-        //{
-        //    System.out.println("Value in Dictionary : " + i.nextElement());
-        //}
-
-        // get() method :
-        //System.out.println("\nValue at key = 6 : " + geek.get("6"));
-
-        // isEmpty() method :
-        //System.out.println("\nThere is no key-value pair : " + geek.isEmpty() + "\n");
-
-        // keys() method :
-        //for (Enumeration k = geek.keys(); k.hasMoreElements();)
-        //{
-        //    System.out.println("Keys in Dictionary : " + k.nextElement());
-        //}
-
-        // remove() method :
-        //System.out.println("\nRemove : " + geek.remove("123"));
-
-        //System.out.println("\nSize of Dictionary : " + geek.size());
-
-        //Scanner myObj = new Scanner(System.in);  // Create a Scanner object
-        //System.out.println("Enter key or key-note pair");
-
-        //String userName = myObj.nextLine();  // Read user input
-        //System.out.println("Note is: " + userName);  // Output user input
-
-        // Print out welcome message
 
     }
 }
