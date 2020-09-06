@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4487b665-91bc-40cc-995b-c022011b34dd" name="Default Changelist" comment="deleted some commented code" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1gvpO47PxStWlLg3F9NisEZtSZN" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="jdk.selected.JAVA_MODULE" value="14" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ec-1/src" />
+      <recent name="$PROJECT_DIR$/ec-1/com.company" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Notes">
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="ec-1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.company.Main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.company.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Notes" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Notes" />
+      <module name="ec-1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Notes" />
+        <item itemvalue="Application.Main (1)" />
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4487b665-91bc-40cc-995b-c022011b34dd" name="Default Changelist" comment="" />
+      <created>1599004885635</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1599004885635</updated>
+    </task>
+    <task id="LOCAL-00001" summary="test commit">
+      <created>1599004981713</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1599004981713</updated>
+    </task>
+    <task id="LOCAL-00002" summary="working git. hello world created.">
+      <created>1599016604537</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1599016604537</updated>
+    </task>
+    <task id="LOCAL-00003" summary="some templates">
+      <created>1599017350386</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1599017350386</updated>
+    </task>
+    <task id="LOCAL-00004" summary="renamed file to Notes">
+      <created>1599046364964</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1599046364964</updated>
+    </task>
+    <task id="LOCAL-00005" summary="prompt variable">
+      <created>1599046699510</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1599046699510</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Some prompt changes. There is a problem right now about how userInput.hasNextLine() works">
+      <created>1599060571959</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1599060571959</updated>
+    </task>
+    <task id="LOCAL-00007" summary="finished">
+      <created>1599080285848</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1599080285848</updated>
+    </task>
+    <task id="LOCAL-00008" summary="deleted some commented code">
+      <created>1599100708053</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1599100708053</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="test commit" />
+    <MESSAGE value="working git. hello world created." />
+    <MESSAGE value="some templates" />
+    <MESSAGE value="renamed file to Notes" />
+    <MESSAGE value="prompt variable" />
+    <MESSAGE value="Some prompt changes. There is a problem right now about how userInput.hasNextLine() works" />
+    <MESSAGE value="finished" />
+    <MESSAGE value="deleted some commented code" />
+    <option name="LAST_COMMIT_MESSAGE" value="deleted some commented code" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="282" y="255" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599006052157">
+      <screen x="0" y="23" width="1680" height="975" />
+    </state>
+    <state x="282" y="255" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.975@0.23.1680.975" timestamp="1599006052157" />
+    <state x="619" y="386" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1599006415838">
+      <screen x="0" y="23" width="1680" height="975" />
+    </state>
+    <state x="619" y="386" key="#com.intellij.ide.util.TreeClassChooserDialog/0.23.1680.975@0.23.1680.975" timestamp="1599006415838" />
+    <state x="594" y="359" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1599016404555">
+      <screen x="0" y="23" width="1680" height="975" />
+    </state>
+    <state x="594" y="359" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.23.1680.975@0.23.1680.975" timestamp="1599016404555" />
+    <state width="1358" height="316" key="GridCell.Tab.0.bottom" timestamp="1599086093357">
+      <screen x="0" y="23" width="1680" height="975" />
+    </state>
+    <state width="1358" height="316" key="GridCell.Tab.0.bottom/0.23.1680.975@0.23.1680.975" timestamp="1599086093357" />
+    <state width="1358" height="316" key="GridCell.Tab.0.center" timestamp="1599086093357">
+      <screen x="0" y="23" width="1680" height="975" />
+    </state>
+    <state width="1358" height="316" key="GridCell.Tab.0.center/0.23.1680.975@0.23.1680.975" timestamp="1599086093357" />
+    <state width="1358" height="316" key="GridCell.Tab.0.left" timestamp="1599086093356">
+      <screen x="0" y="23" width="1680" height="975" />
+    </state>
+    <state width="1358" height="316" key="GridCell.Tab.0.left/0.23.1680.975@0.23.1680.975" timestamp="1599086093356" />
+    <state width="1358" height="316" key="GridCell.Tab.0.right" timestamp="1599086093357">
+      <screen x="0" y="23" width="1680" height="975" />
+    </state>
+    <state width="1358" height="316" key="GridCell.Tab.0.right/0.23.1680.975@0.23.1680.975" timestamp="1599086093357" />
+    <state width="1358" height="316" key="GridCell.Tab.1.bottom" timestamp="1599086093358">
+      <screen x="0" y="23" width="1680" height="975" />
+    </state>
+    <state width="1358" height="316" key="GridCell.Tab.1.bottom/0.23.1680.975@0.23.1680.975" timestamp="1599086093358" />
+    <state width="1358" height="316" key="GridCell.Tab.1.center" timestamp="1599086093358">
+      <screen x="0" y="23" width="1680" height="975" />
+    </state>
+    <state width="1358" height="316" key="GridCell.Tab.1.center/0.23.1680.975@0.23.1680.975" timestamp="1599086093358" />
+    <state width="1358" height="316" key="GridCell.Tab.1.left" timestamp="1599086093358">
+      <screen x="0" y="23" width="1680" height="975" />
+    </state>
+    <state width="1358" height="316" key="GridCell.Tab.1.left/0.23.1680.975@0.23.1680.975" timestamp="1599086093358" />
+    <state width="1358" height="316" key="GridCell.Tab.1.right" timestamp="1599086093358">
+      <screen x="0" y="23" width="1680" height="975" />
+    </state>
+    <state width="1358" height="316" key="GridCell.Tab.1.right/0.23.1680.975@0.23.1680.975" timestamp="1599086093358" />
+    <state x="349" y="149" key="SettingsEditor" timestamp="1599006206388">
+      <screen x="0" y="23" width="1680" height="975" />
+    </state>
+    <state x="349" y="149" key="SettingsEditor/0.23.1680.975@0.23.1680.975" timestamp="1599006206388" />
+    <state x="440" y="250" key="Vcs.Push.Dialog.v2" timestamp="1599100717109">
+      <screen x="0" y="23" width="1680" height="975" />
+    </state>
+    <state x="440" y="250" key="Vcs.Push.Dialog.v2/0.23.1680.975@0.23.1680.975" timestamp="1599100717109" />
+    <state x="254" y="188" key="new project wizard" timestamp="1599016384465">
+      <screen x="0" y="23" width="1680" height="975" />
+    </state>
+    <state x="254" y="188" key="new project wizard/0.23.1680.975@0.23.1680.975" timestamp="1599016384465" />
+  </component>
+</project>
