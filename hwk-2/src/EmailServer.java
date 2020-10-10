@@ -6,11 +6,11 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class TcpServer {
+public class EmailServer {
     private ServerSocket mServerSocket;
     private Socket mClientSocket;
 
-    public TcpServer(int port) throws IOException {
+    public EmailServer(int port) throws IOException {
         mServerSocket = new ServerSocket(port);
     }
 
@@ -25,24 +25,25 @@ public class TcpServer {
             String clientMessage = clientReader.readLine();
             System.out.println("received message: " + clientMessage);
 
-            EmailProtoclMessage message = new EmailProtoclMessage(clientMessage);
+            /*
+            EmailProtocolMessage message = new EmailProtocolMessage(clientMessage);
 
-            switch (message.getParam(EmailProtoclMessage.TYPE_KEY)) {
-                case EmailProtoclMessage.LOGIN_COMMAND:
+            switch (message.getParam(EmailProtocolMessage.TYPE_KEY)) {
+                case EmailProtocolMessage.LOGIN_COMMAND:
                     login();
                     break;
-                case EmailProtoclMessage.SENDEMAIL_COMMAND:
+                case EmailProtocolMessage.SENDEMAIL_COMMAND:
                     sendEmail();
                     break;
-                case EmailProtoclMessage.RETRIVE_EMAIL_COMMAND:
+                case EmailProtocolMessage.RETRIVE_EMAIL_COMMAND:
                     retrieve();
                     break;
-                case EmailProtoclMessage.LOGOUT_COMMAND:
-                    logOut()
+                case EmailProtocolMessage.LOGOUT_COMMAND:
+                    logOut();
                     break;
                 default:
             }
-
+            */
             if (clientMessage.equals("quit")) {
                 quit = true;
             }
@@ -63,18 +64,25 @@ public class TcpServer {
     }
 
     private int login() {
-
+        return 0;
     }
 
     private int sendEmail() {
-
+        return 0;
     }
 
     private int retrieve() {
-
+        return 0;
     }
 
     private int logOut() {
+        return 0;
+    }
 
+    private static final int SERVER_PORT = 6789;
+
+    public static void main(String argv[]) throws IOException {
+        EmailServer emailServer = new EmailServer(SERVER_PORT);
+        emailServer.listen();
     }
 }
