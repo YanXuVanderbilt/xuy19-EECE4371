@@ -99,7 +99,12 @@ public class EmailServer {
         if (!isLoggedIn) {
             return "server:retrieve:debug:ERROR: User is not logged in";
         }
-        String emails = String.join("ZZZ", mEmails);
+        String emails;
+        if (mEmails.isEmpty()) {
+            emails = "ZZZ";
+        } else {
+            emails = String.join("ZZZ", mEmails);
+        }
         EmailProtocolMessage msg = new EmailProtocolMessage();
         msg.putParam(EmailProtocolMessage.TYPE_KEY, EmailProtocolMessage.EMAILS_KEY);
         msg.putParam(EmailProtocolMessage.EMAILS_KEY, emails);
