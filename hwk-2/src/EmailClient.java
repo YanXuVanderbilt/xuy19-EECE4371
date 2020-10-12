@@ -11,6 +11,7 @@ public class EmailClient {
     //private static final String HOST_ADDRESS = "10.66.56.222";
     private static final int PORT = 6789;
     private static String userName = "";
+    private static boolean DEBUG = false;
     private static final BufferedReader userBufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
 
@@ -29,15 +30,15 @@ public class EmailClient {
         //in.close();
         switch (userInput) {
             case "1" -> {
-                System.out.println("client:displayMenu:debug:send mail");
+                if (DEBUG) System.out.println("client:displayMenu:debug:send mail");
                 return 1;
             }
             case "2" -> {
-                System.out.println("client:displayMenu:debug:read mail");
+                if (DEBUG) System.out.println("client:displayMenu:debug:read mail");
                 return 2;
             }
             case "3" -> {
-                System.out.println("client:displayMenu:debug:exit");
+                if (DEBUG) System.out.println("client:displayMenu:debug:exit");
                 return 3;
             }
             default -> {
@@ -89,8 +90,20 @@ public class EmailClient {
             String responseFromServer = serverBufferedReader.readLine();
             System.out.println("Response from server: " + responseFromServer);
 
-            if (choice == 2) {
-                displayEmails(responseFromServer);
+            switch (choice) {
+                case 1 -> {
+                    if (!sendEmail_ack(responseFromServer)) {
+                        System.out.println("No response from server. Send email failed.\n");
+                        return;
+                    }
+                }
+                case 2 -> displayEmails(responseFromServer);
+                case 3 -> {
+                    if (!logOut_ack(responseFromServer)) {
+                        System.out.println("No response from server. Log out failed.\n");
+                        return;
+                    }
+                }
             }
         }
 
@@ -155,7 +168,7 @@ public class EmailClient {
         for (String email : emails) {
             displayEmail(email);
         }
-        System.out.println("client:displayEmails:debug:exited successfully");
+        if (DEBUG) System.out.println("client:displayEmails:debug:exited successfully");
     }
 
     private static String logOut() {
@@ -167,6 +180,22 @@ public class EmailClient {
     private static boolean login_ack(String ack) {
         EmailProtocolMessage msg = new EmailProtocolMessage(ack);
         //System.out.println("client:login_ack:debug:" + msg.getParam(EmailProtocolMessage.STATUS_KEY));
-        return msg.getParam(EmailProtocolMessage.STATUS_KEY).equals(EmailProtocolMessage.OK_STATUS);
+        return msg.getParam(EmailProtocolMessage.TYPE_KEY).equals(EmailProtocolMessage.LOGIN_ACK) &&
+                msg.getParam(EmailProtocolMessage.STATUS_KEY).equals(EmailProtocolMessage.OK_STATUS);
     }
+
+    private static boolean sendEmail_ack(String ack) {
+        EmailProtocolMessage msg = new EmailProtocolMessage(ack);
+        //System.out.println("client:login_ack:debug:" + msg.getParam(EmailProtocolMessage.STATUS_KEY));
+        return msg.getParam(EmailProtocolMessage.TYPE_KEY).equals(EmailProtocolMessage.SENDEMAIL_ACK) &&
+                msg.getParam(EmailProtocolMessage.STATUS_KEY).equals(EmailProtocolMessage.OK_STATUS);
+    }
+
+    private static boolean logOut_ack(String ack) {
+        EmailProtocolMessage msg = new EmailProtocolMessage(ack);
+        //System.out.println("client:login_ack:debug:" + msg.getParam(EmailProtocolMessage.STATUS_KEY));
+        return msg.getParam(EmailProtocolMessage.TYPE_KEY).equals(EmailProtocolMessage.LOGOUT_ACK) &&
+                msg.getParam(EmailProtocolMessage.STATUS_KEY).equals(EmailProtocolMessage.OK_STATUS);
+    }
+
 }

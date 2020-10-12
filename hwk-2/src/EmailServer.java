@@ -12,6 +12,7 @@ public class EmailServer {
     private Socket mClientSocket;
     private boolean isLoggedIn = false;
     private final ArrayList<String> mEmails = new ArrayList<>();
+    private static boolean DEBUG = false;
 
     public EmailServer(int port) throws IOException {
         mServerSocket = new ServerSocket(port);
@@ -38,19 +39,19 @@ public class EmailServer {
             switch (message.getParam(EmailProtocolMessage.TYPE_KEY)) {
                 case EmailProtocolMessage.LOGIN_COMMAND -> {
                     response = login();
-                    System.out.println("server: debug: logged the user in");
+                    if (DEBUG) System.out.println("server: debug: logged the user in");
                 }
                 case EmailProtocolMessage.SENDEMAIL_COMMAND -> {
                     response = sendEmail(message);
-                    System.out.println("server: debug: sent email");
+                    if (DEBUG) System.out.println("server: debug: sent email");
                 }
                 case EmailProtocolMessage.RETRIVE_EMAIL_COMMAND -> {
                     response = retrieve();
-                    System.out.println("server: debug: retrieved email");
+                    if (DEBUG) System.out.println("server: debug: retrieved email");
                 }
                 case EmailProtocolMessage.LOGOUT_COMMAND -> {
                     response = logOut();
-                    System.out.println("server: debug: logged user out");
+                    if (DEBUG) System.out.println("server: debug: logged user out");
                 }
                 default -> {
                     System.out.println("Error in command");
@@ -80,7 +81,7 @@ public class EmailServer {
         return login_ack();
     }
 
-    private static String login_ack() {
+    private String login_ack() {
         EmailProtocolMessage msg = new EmailProtocolMessage();
         msg.putParam(EmailProtocolMessage.TYPE_KEY, EmailProtocolMessage.LOGIN_ACK);
         msg.putParam(EmailProtocolMessage.STATUS_KEY, EmailProtocolMessage.OK_STATUS);
@@ -89,15 +90,22 @@ public class EmailServer {
 
     private String sendEmail(EmailProtocolMessage msg) {
         if (!isLoggedIn) {
-            return "server:sendEmail:debug:ERRRO: User is not logged in";
+            return "ERROR: User is not logged in";
         }
         mEmails.add(msg.getParam(EmailProtocolMessage.EMAIL_KEY));
-        return "server:sendEmail:debug:Email sent";
+        return sendEmail_ack();
+    }
+
+    private String sendEmail_ack() {
+        EmailProtocolMessage msg = new EmailProtocolMessage();
+        msg.putParam(EmailProtocolMessage.TYPE_KEY, EmailProtocolMessage.SENDEMAIL_ACK);
+        msg.putParam(EmailProtocolMessage.STATUS_KEY, EmailProtocolMessage.OK_STATUS);
+        return msg.toString();
     }
 
     private String retrieve() {
         if (!isLoggedIn) {
-            return "server:retrieve:debug:ERROR: User is not logged in";
+            return "ERROR: User is not logged in";
         }
         String emails;
         if (mEmails.isEmpty()) {
@@ -108,16 +116,23 @@ public class EmailServer {
         EmailProtocolMessage msg = new EmailProtocolMessage();
         msg.putParam(EmailProtocolMessage.TYPE_KEY, EmailProtocolMessage.EMAILS_KEY);
         msg.putParam(EmailProtocolMessage.EMAILS_KEY, emails);
-        System.out.println("server:retrieve:debug:" + msg.toString());
+        if (DEBUG) System.out.println("server:retrieve:debug:" + msg.toString());
         return msg.toString();
     }
 
     private String logOut() {
         if (!isLoggedIn) {
-            return "server:logOut:debug:ERRRO: User is not logged in";
+            return "ERROR: User is not logged in";
         }
         isLoggedIn = false;
-        return "server:logOut:debug:logged user out";
+        return logOut_ack();
+    }
+
+    private String logOut_ack() {
+        EmailProtocolMessage msg = new EmailProtocolMessage();
+        msg.putParam(EmailProtocolMessage.TYPE_KEY, EmailProtocolMessage.LOGOUT_ACK);
+        msg.putParam(EmailProtocolMessage.STATUS_KEY, EmailProtocolMessage.OK_STATUS);
+        return msg.toString();
     }
 
     private static final int SERVER_PORT = 6789;
