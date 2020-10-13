@@ -60,7 +60,7 @@ public class EmailClient {
 
         outToServer.writeBytes(login() + "\n");
         String login_ack = serverBufferedReader.readLine();
-        System.out.println(login_ack);
+        if (DEBUG) System.out.println(login_ack);
         if (!login_ack(login_ack)) {
             System.out.println("No response from server. Login failed.\n");
             return;
@@ -88,7 +88,7 @@ public class EmailClient {
             //outToServer.writeBytes(userInput+"\n");
 
             String responseFromServer = serverBufferedReader.readLine();
-            System.out.println("Response from server: " + responseFromServer);
+            if (DEBUG) System.out.println("Response from server: " + responseFromServer);
 
             switch (choice) {
                 case 1 -> {
@@ -156,7 +156,10 @@ public class EmailClient {
     private static void displayEmail(String in) {
         String[] fields = in.split(";");
         for (String field : fields) {
-            System.out.println(field);
+            String[] keyValue = field.split(">");
+            if (!keyValue[0].equals("to")) {
+                System.out.println(field);
+            }
         }
         System.out.println();
     }
@@ -165,6 +168,7 @@ public class EmailClient {
         EmailProtocolMessage msg = new EmailProtocolMessage(in);
         String emails_str = msg.getParam(EmailProtocolMessage.EMAILS_KEY);
         String[] emails = emails_str.split("ZZZ");
+        System.out.println();
         for (String email : emails) {
             displayEmail(email);
         }

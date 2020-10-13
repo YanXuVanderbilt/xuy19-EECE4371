@@ -6,13 +6,16 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 public class EmailServer {
     private final ServerSocket mServerSocket;
     private Socket mClientSocket;
     private boolean isLoggedIn = false;
     private final ArrayList<String> mEmails = new ArrayList<>();
-    private static boolean DEBUG = false;
+    //private final Hashtable<String, String> users = new Hashtable<String, String>();
+    private String userName = "";
+    private static final boolean DEBUG = false;
 
     public EmailServer(int port) throws IOException {
         mServerSocket = new ServerSocket(port);
@@ -38,6 +41,7 @@ public class EmailServer {
 
             switch (message.getParam(EmailProtocolMessage.TYPE_KEY)) {
                 case EmailProtocolMessage.LOGIN_COMMAND -> {
+                    userName = message.getParam(EmailProtocolMessage.USERNAME_KEY);
                     response = login();
                     if (DEBUG) System.out.println("server: debug: logged the user in");
                 }
@@ -51,6 +55,7 @@ public class EmailServer {
                 }
                 case EmailProtocolMessage.LOGOUT_COMMAND -> {
                     response = logOut();
+                    quit = true;
                     if (DEBUG) System.out.println("server: debug: logged user out");
                 }
                 default -> {
@@ -58,14 +63,11 @@ public class EmailServer {
                     response = "ERROR";
                 }
             }
-
-            if (clientMessage.equals("quit")) {
-                quit = true;
-            }
-
             clientWriter.writeBytes(response + "\n");
             System.out.println("written response to user: " + response + "\n");
         }
+        //mServerSocket.close();
+        listen();
     }
 
     private void waitForConnection() throws IOException {
@@ -107,11 +109,23 @@ public class EmailServer {
         if (!isLoggedIn) {
             return "ERROR: User is not logged in";
         }
+        ArrayList<String> userEmails = new ArrayList<>();
+        for (String email : mEmails) {
+            String[] fields = email.split(";");
+            for (String field : fields) {
+                String[] keyValue = field.split(">");
+                if (keyValue[0].equals("to")
+                    && keyValue[1].equals(userName)) {
+                    userEmails.add(email);
+                    break;
+                }
+            }
+        }
         String emails;
-        if (mEmails.isEmpty()) {
+        if (userEmails.isEmpty()) {
             emails = "ZZZ";
         } else {
-            emails = String.join("ZZZ", mEmails);
+            emails = String.join("ZZZ", userEmails);
         }
         EmailProtocolMessage msg = new EmailProtocolMessage();
         msg.putParam(EmailProtocolMessage.TYPE_KEY, EmailProtocolMessage.EMAILS_KEY);
