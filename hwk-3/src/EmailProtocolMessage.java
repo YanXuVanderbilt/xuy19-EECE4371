@@ -13,15 +13,20 @@ public class EmailProtocolMessage {
     public static final String EMAIL_KEY = "email";
     public static final String EMAILS_KEY = "emails";
     public static final String STATUS_KEY = "status";
+    public static final String LOGIN_KEY = "login";
+    public static final String PASSWORD_KEY = "password";
 
-    public static final String LOGIN_COMMAND = "log_in";
+    public static final String LOGIN_COMMAND_OLD = "log_in";
+    public static final String LOGIN_COMMAND = "login";
     public static final String SENDEMAIL_COMMAND = "send_email";
     public static final String RETRIVE_EMAIL_COMMAND = "retrieve_emails";
     public static final String LOGOUT_COMMAND = "log_out";
-    public static final String LOGIN_ACK = "log_in_ack";
+    public static final String LOGIN_ACK_OLD = "log_in_ack";
+    public static final String LOGIN_ACK = "login_ack";
     public static final String LOGOUT_ACK = "log_out_ack";
     public static final String SENDEMAIL_ACK = "send_email_ack";
     public static final String OK_STATUS = "ok";
+    public static final String FAILED_STATUS = "failed";
     private final Hashtable<String, String> dict = new Hashtable<String, String>();
 
     // TODO: Test this function

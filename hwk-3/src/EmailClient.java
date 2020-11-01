@@ -7,11 +7,12 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class EmailClient {
-    private static final String HOST_ADDRESS = "127.0.0.1";
+    public static final String HOST_ADDRESS = "127.0.0.1";
     //private static final String HOST_ADDRESS = "10.66.56.222";
-    private static final int PORT = 6789;
-    private static String userName = "";
-    private static boolean DEBUG = false;
+    public static final int PORT = 6789;
+    private String userName = "";
+    private String password = "";
+    public static boolean DEBUG = false;
     private static final BufferedReader userBufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
 
@@ -47,7 +48,7 @@ public class EmailClient {
             }
         }
     }
-
+/*
     public static void main(String[] args) throws IOException {
         Socket socket = new Socket(HOST_ADDRESS, PORT);
         DataOutputStream outToServer= new DataOutputStream(socket.getOutputStream());
@@ -109,23 +110,30 @@ public class EmailClient {
 
         socket.close();
     }
+    */
 
-    private static String login() throws IOException {
+    public String login() throws IOException {
         String usrName;
+        String pwd;
        // Scanner in = new Scanner(System.in);
 
-        System.out.print("Please provide your username: ");
-        //usrName = in.nextLine();
+        System.out.println("Please provide your username and password: ");
+        System.out.println("username: ");
         usrName = userBufferedReader.readLine();
+        System.out.println("password: ");
+        pwd = userBufferedReader.readLine();
+        //usrName = in.nextLine();
         userName = usrName;
+        password = pwd;
         EmailProtocolMessage login_msg = new EmailProtocolMessage();
         login_msg.putParam(EmailProtocolMessage.TYPE_KEY, EmailProtocolMessage.LOGIN_COMMAND);
+        login_msg.putParam(EmailProtocolMessage.PASSWORD_KEY, password);
         login_msg.putParam(EmailProtocolMessage.USERNAME_KEY, userName);
         //in.close();
         return login_msg.toString();
     }
 
-    private static String sendEmail() throws IOException {
+    public String sendEmail() throws IOException {
         if (userName.equals("")) {
             return ""; // not logged in
         }
@@ -147,7 +155,7 @@ public class EmailClient {
         return msg.toString();
     }
 
-    private static String retrieve() {
+    public static String retrieve() {
         EmailProtocolMessage msg = new EmailProtocolMessage();
         msg.putParam(EmailProtocolMessage.TYPE_KEY, EmailProtocolMessage.RETRIVE_EMAIL_COMMAND);
         return msg.toString();
@@ -164,7 +172,7 @@ public class EmailClient {
         System.out.println();
     }
 
-    private static void displayEmails(String in) {
+    public static void displayEmails(String in) {
         EmailProtocolMessage msg = new EmailProtocolMessage(in);
         String emails_str = msg.getParam(EmailProtocolMessage.EMAILS_KEY);
         String[] emails = emails_str.split("ZZZ");
@@ -175,27 +183,27 @@ public class EmailClient {
         if (DEBUG) System.out.println("client:displayEmails:debug:exited successfully");
     }
 
-    private static String logOut() {
+    public static String logOut() {
         EmailProtocolMessage msg = new EmailProtocolMessage();
         msg.putParam(EmailProtocolMessage.TYPE_KEY, EmailProtocolMessage.LOGOUT_COMMAND);
         return msg.toString();
     }
 
-    private static boolean login_ack(String ack) {
+    public static boolean login_ack(String ack) {
         EmailProtocolMessage msg = new EmailProtocolMessage(ack);
         //System.out.println("client:login_ack:debug:" + msg.getParam(EmailProtocolMessage.STATUS_KEY));
         return msg.getParam(EmailProtocolMessage.TYPE_KEY).equals(EmailProtocolMessage.LOGIN_ACK) &&
                 msg.getParam(EmailProtocolMessage.STATUS_KEY).equals(EmailProtocolMessage.OK_STATUS);
     }
 
-    private static boolean sendEmail_ack(String ack) {
+    public static boolean sendEmail_ack(String ack) {
         EmailProtocolMessage msg = new EmailProtocolMessage(ack);
         //System.out.println("client:login_ack:debug:" + msg.getParam(EmailProtocolMessage.STATUS_KEY));
         return msg.getParam(EmailProtocolMessage.TYPE_KEY).equals(EmailProtocolMessage.SENDEMAIL_ACK) &&
                 msg.getParam(EmailProtocolMessage.STATUS_KEY).equals(EmailProtocolMessage.OK_STATUS);
     }
 
-    private static boolean logOut_ack(String ack) {
+    public static boolean logOut_ack(String ack) {
         EmailProtocolMessage msg = new EmailProtocolMessage(ack);
         //System.out.println("client:login_ack:debug:" + msg.getParam(EmailProtocolMessage.STATUS_KEY));
         return msg.getParam(EmailProtocolMessage.TYPE_KEY).equals(EmailProtocolMessage.LOGOUT_ACK) &&

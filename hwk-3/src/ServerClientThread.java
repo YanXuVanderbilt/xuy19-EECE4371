@@ -5,11 +5,13 @@ import java.io.InputStreamReader;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
-public class EmailServer extends Thread {
-    private final ServerSocket mServerSocket;
+public class ServerClientThread extends Thread {
+
+    //private final ServerSocket mServerSocket;
     private Socket mClientSocket;
     private boolean isLoggedIn = false;
     private final ArrayList<String> mEmails = new ArrayList<>();
@@ -17,13 +19,22 @@ public class EmailServer extends Thread {
     private String userName = "";
     public static final boolean DEBUG = false;
 
-    public EmailServer(int port) throws IOException {
-        mServerSocket = new ServerSocket(port);
+    public ServerClientThread(int port) throws IOException {
+        //mServerSocket = new ServerSocket(port);
+    }
+
+    public ServerClientThread(Socket cS) throws IOException {
+        //mServerSocket = new ServerSocket(SERVER_PORT);
+        mClientSocket = cS;
+    }
+
+    public ServerClientThread() throws IOException {
+        //mServerSocket = new ServerSocket(SERVER_PORT);
     }
 
     public void listen() throws IOException {
         boolean quit = false;
-        waitForConnection();
+        //waitForConnection();
 
         while (!quit) {
             BufferedReader clientReader = new BufferedReader(new InputStreamReader(mClientSocket.getInputStream()));
@@ -67,15 +78,16 @@ public class EmailServer extends Thread {
             System.out.println("written response to user: " + response + "\n");
         }
         //mServerSocket.close();
-        listen();
+        //listen();
     }
 
-    private void waitForConnection() throws IOException {
+    private Socket waitForConnection() throws IOException {
         System.out.println("waiting for a connection");
-        mClientSocket = mServerSocket.accept();
+        //mClientSocket = mServerSocket.accept();
         System.out.println("connected!");
         InetAddress clientAddress = mClientSocket.getInetAddress();
         System.out.println("client at: " + clientAddress.toString() + ":" + mClientSocket.getPort());
+        return mClientSocket;
     }
 
     private String login(EmailProtocolMessage msg) {
@@ -133,7 +145,7 @@ public class EmailServer extends Thread {
             for (String field : fields) {
                 String[] keyValue = field.split(">");
                 if (keyValue[0].equals("to")
-                    && keyValue[1].equals(userName)) {
+                        && keyValue[1].equals(userName)) {
                     userEmails.add(email);
                     break;
                 }
@@ -169,9 +181,14 @@ public class EmailServer extends Thread {
 
     private static final int SERVER_PORT = 6789;
 
-    public static void main(String argv[]) throws IOException {
-        EmailServer emailServer = new EmailServer(SERVER_PORT);
-        emailServer.listen();
+    public void run(){
+        try{
+            listen();
+        }catch(Exception ex){
+            System.out.println(ex);
+        }//finally{
+         //   System.out.println("Client -" + " exit!! ");
+        //}
     }
 
 }
