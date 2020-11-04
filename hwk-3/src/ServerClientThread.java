@@ -14,10 +14,12 @@ public class ServerClientThread extends Thread {
     //private final ServerSocket mServerSocket;
     private Socket mClientSocket;
     private boolean isLoggedIn = false;
-    private final ArrayList<String> mEmails = new ArrayList<>();
-    private final Hashtable<String, String> users = new Hashtable<String, String>();
+    public static final ArrayList<String> mEmails = new ArrayList<>();
+    public static final Hashtable<String, String> users = new Hashtable<String, String>();
+    private final Hashtable<String, String> tokens = new Hashtable<>();
     private String userName = "";
-    public static final boolean DEBUG = false;
+    private int nextToken = 0;
+    public static final boolean DEBUG = true;
 
     public ServerClientThread(int port) throws IOException {
         //mServerSocket = new ServerSocket(port);
@@ -61,11 +63,11 @@ public class ServerClientThread extends Thread {
                     if (DEBUG) System.out.println("server: debug: sent email");
                 }
                 case EmailProtocolMessage.RETRIVE_EMAIL_COMMAND -> {
-                    response = retrieve();
+                    response = retrieve(message);
                     if (DEBUG) System.out.println("server: debug: retrieved email");
                 }
                 case EmailProtocolMessage.LOGOUT_COMMAND -> {
-                    response = logOut();
+                    response = logOut(message);
                     quit = true;
                     if (DEBUG) System.out.println("server: debug: logged user out");
                 }
@@ -90,33 +92,47 @@ public class ServerClientThread extends Thread {
         return mClientSocket;
     }
 
+    private boolean authenticate(EmailProtocolMessage msg) {
+        String token;
+        boolean ans;
+        try {
+            token = msg.getParam(EmailProtocolMessage.TOKEN_KEY);
+            ans = tokens.get(userName).equals(token);
+        } catch (NullPointerException exception) {
+            if (DEBUG) System.out.println("authenticate:debug:exception caught");
+            return false;
+        }
+        return ans;
+    }
+
     private String login(EmailProtocolMessage msg) {
         String usrn = msg.getParam(EmailProtocolMessage.USERNAME_KEY);
         String pwd = msg.getParam(EmailProtocolMessage.PASSWORD_KEY);
         if (users.contains(usrn)) {
             if (users.get(usrn).equals(pwd)) {
                 isLoggedIn = true;
-                return login_ack();
+                return login_ack(true, usrn);
             } else {
-                return login_nack();
+                return login_ack(false, usrn);
             }
         }
         users.put(usrn, pwd);
         isLoggedIn = true;
-        return login_ack();
+        return login_ack(true, usrn);
     }
 
-    private String login_ack() {
+    private String login_ack(boolean success, String username) {
         EmailProtocolMessage msg = new EmailProtocolMessage();
         msg.putParam(EmailProtocolMessage.TYPE_KEY, EmailProtocolMessage.LOGIN_ACK);
-        msg.putParam(EmailProtocolMessage.STATUS_KEY, EmailProtocolMessage.OK_STATUS);
-        return msg.toString();
-    }
-
-    private String login_nack() {
-        EmailProtocolMessage msg = new EmailProtocolMessage();
-        msg.putParam(EmailProtocolMessage.TYPE_KEY, EmailProtocolMessage.LOGIN_ACK);
-        msg.putParam(EmailProtocolMessage.STATUS_KEY, EmailProtocolMessage.FAILED_STATUS);
+        if (success) {
+            msg.putParam(EmailProtocolMessage.STATUS_KEY, EmailProtocolMessage.OK_STATUS);
+            msg.putParam(EmailProtocolMessage.TOKEN_KEY, String.valueOf(nextToken));
+            tokens.put(username, String.valueOf(nextToken));
+            nextToken += 1;
+        } else {
+            msg.putParam(EmailProtocolMessage.STATUS_KEY, EmailProtocolMessage.FAILED_STATUS);
+            msg.putParam(EmailProtocolMessage.TOKEN_KEY, "-1");
+        }
         return msg.toString();
     }
 
@@ -124,20 +140,33 @@ public class ServerClientThread extends Thread {
         if (!isLoggedIn) {
             return "ERROR: User is not logged in";
         }
+        boolean success = authenticate(msg);
+        if (!success) {
+            return sendEmail_ack(success);
+        }
         mEmails.add(msg.getParam(EmailProtocolMessage.EMAIL_KEY));
-        return sendEmail_ack();
+        return sendEmail_ack(success);
     }
 
-    private String sendEmail_ack() {
+    private String sendEmail_ack(boolean success) {
         EmailProtocolMessage msg = new EmailProtocolMessage();
         msg.putParam(EmailProtocolMessage.TYPE_KEY, EmailProtocolMessage.SENDEMAIL_ACK);
-        msg.putParam(EmailProtocolMessage.STATUS_KEY, EmailProtocolMessage.OK_STATUS);
+        if (success) {
+            msg.putParam(EmailProtocolMessage.STATUS_KEY, EmailProtocolMessage.OK_STATUS);
+        } else {
+            msg.putParam(EmailProtocolMessage.STATUS_KEY, EmailProtocolMessage.INVALID_TOKEN_STATUS);
+        }
         return msg.toString();
     }
 
-    private String retrieve() {
+    private String retrieve(EmailProtocolMessage mg) {
         if (!isLoggedIn) {
             return "ERROR: User is not logged in";
+        }
+        if (!authenticate(mg)) {
+            EmailProtocolMessage msg = new EmailProtocolMessage();
+            msg.putParam(EmailProtocolMessage.STATUS_KEY, EmailProtocolMessage.INVALID_TOKEN_STATUS);
+            return msg.toString();
         }
         ArrayList<String> userEmails = new ArrayList<>();
         for (String email : mEmails) {
@@ -160,22 +189,32 @@ public class ServerClientThread extends Thread {
         EmailProtocolMessage msg = new EmailProtocolMessage();
         msg.putParam(EmailProtocolMessage.TYPE_KEY, EmailProtocolMessage.EMAILS_KEY);
         msg.putParam(EmailProtocolMessage.EMAILS_KEY, emails);
+        msg.putParam(EmailProtocolMessage.STATUS_KEY, EmailProtocolMessage.OK_STATUS);
         if (DEBUG) System.out.println("server:retrieve:debug:" + msg.toString());
         return msg.toString();
     }
 
-    private String logOut() {
+    private String logOut(EmailProtocolMessage msg) {
         if (!isLoggedIn) {
             return "ERROR: User is not logged in";
         }
+        boolean success = authenticate(msg);
+        if (!success) {
+            return logOut_ack(success);
+        }
         isLoggedIn = false;
-        return logOut_ack();
+        tokens.remove(userName);
+        return logOut_ack(success);
     }
 
-    private String logOut_ack() {
+    private String logOut_ack(boolean success) {
         EmailProtocolMessage msg = new EmailProtocolMessage();
         msg.putParam(EmailProtocolMessage.TYPE_KEY, EmailProtocolMessage.LOGOUT_ACK);
-        msg.putParam(EmailProtocolMessage.STATUS_KEY, EmailProtocolMessage.OK_STATUS);
+        if (success) {
+            msg.putParam(EmailProtocolMessage.STATUS_KEY, EmailProtocolMessage.OK_STATUS);
+        } else {
+            msg.putParam(EmailProtocolMessage.STATUS_KEY, EmailProtocolMessage.INVALID_TOKEN_STATUS);
+        }
         return msg.toString();
     }
 

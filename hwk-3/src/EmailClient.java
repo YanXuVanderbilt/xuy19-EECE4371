@@ -12,7 +12,8 @@ public class EmailClient {
     public static final int PORT = 6789;
     private String userName = "";
     private String password = "";
-    public static boolean DEBUG = false;
+    public static boolean DEBUG = true;
+    public String token = "-1";
     private static final BufferedReader userBufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
 
@@ -48,69 +49,6 @@ public class EmailClient {
             }
         }
     }
-/*
-    public static void main(String[] args) throws IOException {
-        Socket socket = new Socket(HOST_ADDRESS, PORT);
-        DataOutputStream outToServer= new DataOutputStream(socket.getOutputStream());
-        BufferedReader serverBufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-
-        EmailProtocolMessage message = new EmailProtocolMessage();
-        message.putParam(EmailProtocolMessage.TYPE_KEY, EmailProtocolMessage.LOGOUT_COMMAND);
-
-        boolean quit = false;
-
-        outToServer.writeBytes(login() + "\n");
-        String login_ack = serverBufferedReader.readLine();
-        if (DEBUG) System.out.println(login_ack);
-        if (!login_ack(login_ack)) {
-            System.out.println("No response from server. Login failed.\n");
-            return;
-        }
-        while (!quit) {
-            int choice = displayMenu();
-            switch (choice) {
-                case 1 -> outToServer.writeBytes(sendEmail() + "\n");
-                case 2 -> outToServer.writeBytes(retrieve() + "\n");
-                case 3 -> outToServer.writeBytes(logOut() + "\n");
-                default -> {
-                    System.out.println("Something is very wrong here. Quitting.\n");
-                    quit = true;
-                }
-            }
-            if (choice == 3) {
-                quit = true;
-            }
-
-
-            //BufferedReader userBufferedReader = new BufferedReader(new InputStreamReader(System.in));
-            //String userInput = userBufferedReader.readLine();
-            //outToServer.writeBytes("type=log_in&username=yanxu" + "\n");
-            //outToServer.writeBytes("type=send_email&email=to>jbeck;from>yanxu;body>give me extra credit" + "\n");
-            //outToServer.writeBytes(userInput+"\n");
-
-            String responseFromServer = serverBufferedReader.readLine();
-            if (DEBUG) System.out.println("Response from server: " + responseFromServer);
-
-            switch (choice) {
-                case 1 -> {
-                    if (!sendEmail_ack(responseFromServer)) {
-                        System.out.println("No response from server. Send email failed.\n");
-                        return;
-                    }
-                }
-                case 2 -> displayEmails(responseFromServer);
-                case 3 -> {
-                    if (!logOut_ack(responseFromServer)) {
-                        System.out.println("No response from server. Log out failed.\n");
-                        return;
-                    }
-                }
-            }
-        }
-
-        socket.close();
-    }
-    */
 
     public String login() throws IOException {
         String usrName;
@@ -151,13 +89,15 @@ public class EmailClient {
         EmailProtocolMessage msg = new EmailProtocolMessage();
         msg.putParam(EmailProtocolMessage.TYPE_KEY, EmailProtocolMessage.SENDEMAIL_COMMAND);
         msg.putParam(EmailProtocolMessage.EMAIL_KEY, email);
+        msg.putParam(EmailProtocolMessage.TOKEN_KEY, token);
         //in.close();
         return msg.toString();
     }
 
-    public static String retrieve() {
+    public String retrieve() {
         EmailProtocolMessage msg = new EmailProtocolMessage();
         msg.putParam(EmailProtocolMessage.TYPE_KEY, EmailProtocolMessage.RETRIVE_EMAIL_COMMAND);
+        msg.putParam(EmailProtocolMessage.TOKEN_KEY, token);
         return msg.toString();
     }
 
@@ -183,9 +123,10 @@ public class EmailClient {
         if (DEBUG) System.out.println("client:displayEmails:debug:exited successfully");
     }
 
-    public static String logOut() {
+    public String logOut() {
         EmailProtocolMessage msg = new EmailProtocolMessage();
         msg.putParam(EmailProtocolMessage.TYPE_KEY, EmailProtocolMessage.LOGOUT_COMMAND);
+        msg.putParam(EmailProtocolMessage.TOKEN_KEY, token);
         return msg.toString();
     }
 
@@ -208,6 +149,18 @@ public class EmailClient {
         //System.out.println("client:login_ack:debug:" + msg.getParam(EmailProtocolMessage.STATUS_KEY));
         return msg.getParam(EmailProtocolMessage.TYPE_KEY).equals(EmailProtocolMessage.LOGOUT_ACK) &&
                 msg.getParam(EmailProtocolMessage.STATUS_KEY).equals(EmailProtocolMessage.OK_STATUS);
+    }
+
+    public static boolean authenticate(EmailProtocolMessage msg) {
+        boolean ans;
+        try {
+            boolean not_token = msg.getParam(EmailProtocolMessage.STATUS_KEY).equals(EmailProtocolMessage.INVALID_TOKEN_STATUS);
+            boolean not_pass = msg.getParam(EmailProtocolMessage.STATUS_KEY).equals(EmailProtocolMessage.FAILED_STATUS);
+            ans = !(not_token || not_pass);
+        } catch (NullPointerException exception) {
+            return false;
+        }
+        return ans;
     }
 
 }
