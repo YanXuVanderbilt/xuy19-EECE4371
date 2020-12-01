@@ -1,0 +1,4 @@
+#Wed Nov 04 13:56:47 CST 2020
+base.0=/Users/xuyan/Documents/Vanderbilt/2020Fall/EECE4371/xuy19-EECE4371/hwk-3/DroidMail/app/build/intermediates/dex/debug/mergeDexDebug/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

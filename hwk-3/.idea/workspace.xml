@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="046bfede-51c9-433c-9955-b3fd7cde0ad6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/android/Inbox.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/android/MainActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/android/MyAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/android/NewEmail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/layout/activity_inbox.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/layout/activity_new_email.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hwk-3.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hwk-3/ClientDriver.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hwk-3/EmailClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hwk-3/EmailProtocolMessage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hwk-3/ServerClientThread.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hwk-3/ServerClientThreadDriver.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClientDriver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EmailClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EmailProtocolMessage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ServerClientThread.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ServerClientThreadDriver.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1jdgThuSU60EivOBLRbWEM9OJDk" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/server/src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.ServerClientThreadDriver">
+    <configuration name="ClientDriver" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ClientDriver" />
+      <module name="hwk-3" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EmailClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="EmailClient" />
+      <module name="hwk-3" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EmailServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="EmailServer" />
+      <module name="hwk-3" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServerClientThreadDriver" type="Application" factoryName="Application" singleton="true" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ServerClientThreadDriver" />
+      <module name="hwk-3" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.ClientDriver" />
+      <item itemvalue="Application.EmailClient" />
+      <item itemvalue="Application.EmailServer" />
+      <item itemvalue="Application.ServerClientThreadDriver" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ServerClientThreadDriver" />
+        <item itemvalue="Application.ClientDriver" />
+        <item itemvalue="Application.EmailServer" />
+        <item itemvalue="Application.EmailClient" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="046bfede-51c9-433c-9955-b3fd7cde0ad6" name="Default Changelist" comment="" />
+      <created>1604139393373</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1604139393373</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="230" y="94" key="#Project_Structure" timestamp="1604518651509">
+      <screen x="0" y="23" width="1680" height="976" />
+    </state>
+    <state x="230" y="94" key="#Project_Structure/0.23.1680.976@0.23.1680.976" timestamp="1604518651509" />
+    <state x="227" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604470221987">
+      <screen x="0" y="23" width="1680" height="976" />
+    </state>
+    <state x="227" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.973@0.23.1680.973" timestamp="1604262501565" />
+    <state x="227" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.976@0.23.1680.976" timestamp="1604470221987" />
+    <state width="1137" height="263" key="GridCell.Tab.0.bottom" timestamp="1604519850766">
+      <screen x="0" y="23" width="1680" height="976" />
+    </state>
+    <state width="1358" height="263" key="GridCell.Tab.0.bottom/0.23.1680.971@0.23.1680.971" timestamp="1604248090002" />
+    <state width="1358" height="263" key="GridCell.Tab.0.bottom/0.23.1680.972@0.23.1680.972" timestamp="1604263020182" />
+    <state width="1358" height="263" key="GridCell.Tab.0.bottom/0.23.1680.973@0.23.1680.973" timestamp="1604262583066" />
+    <state width="1358" height="263" key="GridCell.Tab.0.bottom/0.23.1680.974@0.23.1680.974" timestamp="1604345785129" />
+    <state width="1358" height="265" key="GridCell.Tab.0.bottom/0.23.1680.975@0.23.1680.975" timestamp="1604154589234" />
+    <state width="1137" height="263" key="GridCell.Tab.0.bottom/0.23.1680.976@0.23.1680.976" timestamp="1604519850766" />
+    <state width="1358" height="263" key="GridCell.Tab.0.bottom/0.23.1680.977@0.23.1680.977" timestamp="1604367238956" />
+    <state width="1137" height="263" key="GridCell.Tab.0.center" timestamp="1604519850766">
+      <screen x="0" y="23" width="1680" height="976" />
+    </state>
+    <state width="1358" height="263" key="GridCell.Tab.0.center/0.23.1680.971@0.23.1680.971" timestamp="1604248090002" />
+    <state width="1358" height="263" key="GridCell.Tab.0.center/0.23.1680.972@0.23.1680.972" timestamp="1604263020181" />
+    <state width="1358" height="263" key="GridCell.Tab.0.center/0.23.1680.973@0.23.1680.973" timestamp="1604262583065" />
+    <state width="1358" height="263" key="GridCell.Tab.0.center/0.23.1680.974@0.23.1680.974" timestamp="1604345785129" />
+    <state width="1358" height="265" key="GridCell.Tab.0.center/0.23.1680.975@0.23.1680.975" timestamp="1604154589234" />
+    <state width="1137" height="263" key="GridCell.Tab.0.center/0.23.1680.976@0.23.1680.976" timestamp="1604519850766" />
+    <state width="1358" height="263" key="GridCell.Tab.0.center/0.23.1680.977@0.23.1680.977" timestamp="1604367238955" />
+    <state width="1137" height="263" key="GridCell.Tab.0.left" timestamp="1604519850765">
+      <screen x="0" y="23" width="1680" height="976" />
+    </state>
+    <state width="1358" height="263" key="GridCell.Tab.0.left/0.23.1680.971@0.23.1680.971" timestamp="1604248090001" />
+    <state width="1358" height="263" key="GridCell.Tab.0.left/0.23.1680.972@0.23.1680.972" timestamp="1604263020180" />
+    <state width="1358" height="263" key="GridCell.Tab.0.left/0.23.1680.973@0.23.1680.973" timestamp="1604262583065" />
+    <state width="1358" height="263" key="GridCell.Tab.0.left/0.23.1680.974@0.23.1680.974" timestamp="1604345785129" />
+    <state width="1358" height="265" key="GridCell.Tab.0.left/0.23.1680.975@0.23.1680.975" timestamp="1604154589234" />
+    <state width="1137" height="263" key="GridCell.Tab.0.left/0.23.1680.976@0.23.1680.976" timestamp="1604519850765" />
+    <state width="1358" height="263" key="GridCell.Tab.0.left/0.23.1680.977@0.23.1680.977" timestamp="1604367238955" />
+    <state width="1137" height="263" key="GridCell.Tab.0.right" timestamp="1604519850766">
+      <screen x="0" y="23" width="1680" height="976" />
+    </state>
+    <state width="1358" height="263" key="GridCell.Tab.0.right/0.23.1680.971@0.23.1680.971" timestamp="1604248090002" />
+    <state width="1358" height="263" key="GridCell.Tab.0.right/0.23.1680.972@0.23.1680.972" timestamp="1604263020181" />
+    <state width="1358" height="263" key="GridCell.Tab.0.right/0.23.1680.973@0.23.1680.973" timestamp="1604262583066" />
+    <state width="1358" height="263" key="GridCell.Tab.0.right/0.23.1680.974@0.23.1680.974" timestamp="1604345785129" />
+    <state width="1358" height="265" key="GridCell.Tab.0.right/0.23.1680.975@0.23.1680.975" timestamp="1604154589234" />
+    <state width="1137" height="263" key="GridCell.Tab.0.right/0.23.1680.976@0.23.1680.976" timestamp="1604519850766" />
+    <state width="1358" height="263" key="GridCell.Tab.0.right/0.23.1680.977@0.23.1680.977" timestamp="1604367238956" />
+    <state width="1358" height="323" key="GridCell.Tab.1.bottom" timestamp="1604345785064">
+      <screen x="0" y="23" width="1680" height="974" />
+    </state>
+    <state width="1358" height="323" key="GridCell.Tab.1.bottom/0.23.1680.973@0.23.1680.973" timestamp="1604179607147" />
+    <state width="1358" height="323" key="GridCell.Tab.1.bottom/0.23.1680.974@0.23.1680.974" timestamp="1604345785064" />
+    <state width="1358" height="323" key="GridCell.Tab.1.center" timestamp="1604345785063">
+      <screen x="0" y="23" width="1680" height="974" />
+    </state>
+    <state width="1358" height="323" key="GridCell.Tab.1.center/0.23.1680.973@0.23.1680.973" timestamp="1604179607146" />
+    <state width="1358" height="323" key="GridCell.Tab.1.center/0.23.1680.974@0.23.1680.974" timestamp="1604345785063" />
+    <state width="1358" height="323" key="GridCell.Tab.1.left" timestamp="1604345785063">
+      <screen x="0" y="23" width="1680" height="974" />
+    </state>
+    <state width="1358" height="323" key="GridCell.Tab.1.left/0.23.1680.973@0.23.1680.973" timestamp="1604179607146" />
+    <state width="1358" height="323" key="GridCell.Tab.1.left/0.23.1680.974@0.23.1680.974" timestamp="1604345785063" />
+    <state width="1358" height="323" key="GridCell.Tab.1.right" timestamp="1604345785063">
+      <screen x="0" y="23" width="1680" height="974" />
+    </state>
+    <state width="1358" height="323" key="GridCell.Tab.1.right/0.23.1680.973@0.23.1680.973" timestamp="1604179607146" />
+    <state width="1358" height="323" key="GridCell.Tab.1.right/0.23.1680.974@0.23.1680.974" timestamp="1604345785063" />
+    <state x="136" y="135" key="new project wizard" timestamp="1604471087854">
+      <screen x="0" y="23" width="1680" height="976" />
+    </state>
+    <state x="136" y="135" key="new project wizard/0.23.1680.976@0.23.1680.976" timestamp="1604471087854" />
+  </component>
+</project>
