@@ -16,4 +16,4 @@ To run this project, run server.py first to start up the server. Enter an ip add
 
 ## Expected Results
 
-After the client begins to run, everything is automatic. Check Server's output to see the training results. One thing to notice is that sometimes when a single client gets connected to server too long it might block the TCP connection. Soif you want to use multiple clients, you should try to connect at least 2 clients to the server within 30s. 
+After the client begins to run, everything is automatic. Check server's output to see the training results. One thing to notice is that sometimes when a single client gets connected to server too long it might block the TCP connection. So if you want to use multiple clients, you should try to connect at least 2 clients to the server within 30s. 
